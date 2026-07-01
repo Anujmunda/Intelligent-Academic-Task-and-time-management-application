@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tasks - Academic Task Manager</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div class="dashboard">
+    <aside class="sidebar">
+      <div class="sidebar-header"><h2>TaskManager</h2></div>
+      <nav>
+        <ul class="nav-menu">
+          <li class="nav-item"><a href="dashboard.html" class="nav-link"><span>Overview</span> Dashboard</a></li>
+          <li class="nav-item"><a href="tasks.html" class="nav-link active"><span>Plan</span> Tasks</a></li>
+          <li class="nav-item"><a href="analytics.html" class="nav-link"><span>Stats</span> Analytics</a></li>
+          <li class="nav-item"><a href="rewards.html" class="nav-link"><span>Wins</span> Rewards</a></li>
+          <li class="nav-item"><a href="accounts.html" class="nav-link"><span>User</span> Accounts</a></li>
+          <li class="nav-item"><a href="#" id="logoutBtn" class="nav-link"><span>Exit</span> Logout</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <main class="main-content">
+      <div class="top-bar">
+        <div class="welcome-section">
+          <h1>Task Management</h1>
+          <p>Organize and track your academic tasks</p>
+        </div>
+        <button class="btn btn-primary" onclick="openTaskModal()">+ New Task</button>
+      </div>
+
+      <div class="card mb-3">
+        <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+          <button class="btn btn-sm btn-primary" onclick="filterTasks('all')">All Tasks</button>
+          <button class="btn btn-sm btn-secondary" onclick="filterTasks('pending')">Pending</button>
+          <button class="btn btn-sm btn-success" onclick="filterTasks('completed')">Completed</button>
+          <button class="btn btn-sm btn-danger" onclick="filterTasks('overdue')">Overdue</button>
+          <button class="btn btn-sm" onclick="generateSchedule()">Generate Schedule</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title">All Tasks</h3>
+          <div style="display: flex; gap: 8px;">
+            <select id="sortBy" class="form-input" style="width: auto;" onchange="loadTasks()">
+              <option value="deadline">Sort by Deadline</option>
+              <option value="priority">Sort by Priority</option>
+              <option value="created">Sort by Created</option>
+            </select>
+          </div>
+        </div>
+        <div id="tasksList"><div class="spinner"></div></div>
+      </div>
+
+      <div class="card mt-3">
+        <div class="card-header"><h3 class="card-title">Study Schedule</h3></div>
+        <div id="studySchedule">
+          <div class="empty-state">
+            <div class="empty-state-icon">[]</div>
+            <p>Click "Generate Schedule" to create your study plan</p>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <div id="taskModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="modalTitle">Create New Task</h2>
+        <button class="close-btn" onclick="closeTaskModal()">&times;</button>
+      </div>
+      <form id="taskForm">
+        <input type="hidden" id="taskId">
+        <div class="form-group">
+          <label for="taskTitle">Task Title *</label>
+          <input type="text" id="taskTitle" class="form-input" required>
+        </div>
+        <div class="form-group">
+          <label for="taskDescription">Description</label>
+          <textarea id="taskDescription" class="form-input" rows="3"></textarea>
+        </div>
+        <div class="form-group">
+          <label for="taskDeadline">Deadline *</label>
+          <input type="datetime-local" id="taskDeadline" class="form-input" required>
+        </div>
+        <div class="form-group">
+          <label for="taskPriority">Priority *</label>
+          <select id="taskPriority" class="form-input" required>
+            <option value="Low">Low</option>
+            <option value="Medium" selected>Medium</option>
+            <option value="High">High</option>
+          </select>
+        </div>
+        <div style="display: flex; gap: 12px; margin-top: 24px;">
+          <button type="submit" class="btn btn-primary" style="flex: 1;">Save Task</button>
+          <button type="button" class="btn btn-secondary" onclick="closeTaskModal()">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/config.js"></script>
+  <script src="js/badges.js"></script>
+  <script src="js/tasks.js"></script>
+</body>
+</html>

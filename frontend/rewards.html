@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rewards and Achievement - Academic Task Manager</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div class="dashboard">
+    <aside class="sidebar">
+      <div class="sidebar-header"><h2>TaskManager</h2></div>
+      <nav>
+        <ul class="nav-menu">
+          <li class="nav-item"><a href="dashboard.html" class="nav-link"><span>Overview</span> Dashboard</a></li>
+          <li class="nav-item"><a href="tasks.html" class="nav-link"><span>Plan</span> Tasks</a></li>
+          <li class="nav-item"><a href="analytics.html" class="nav-link"><span>Stats</span> Analytics</a></li>
+          <li class="nav-item"><a href="rewards.html" class="nav-link active"><span>Wins</span> Rewards</a></li>
+          <li class="nav-item"><a href="accounts.html" class="nav-link"><span>User</span> Accounts</a></li>
+          <li class="nav-item"><a href="#" id="logoutBtn" class="nav-link"><span>Exit</span> Logout</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <main class="main-content">
+      <div class="top-bar">
+        <div class="welcome-section">
+          <h1>Rewards and Achievement</h1>
+          <p>See every badge, milestone, and streak you have earned.</p>
+        </div>
+      </div>
+
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-header"><div class="stat-icon primary">Badges</div></div>
+          <div class="stat-value" id="totalRewards">0</div>
+          <div class="stat-label">Total Rewards Earned</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-header"><div class="stat-icon secondary">Points</div></div>
+          <div class="stat-value" id="rewardPoints">0</div>
+          <div class="stat-label">Reward Points</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-header"><div class="stat-icon warning">Streaks</div></div>
+          <div class="stat-value" id="streakRewards">0</div>
+          <div class="stat-label">Streak Achievements</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-header"><div class="stat-icon success">Latest</div></div>
+          <div class="stat-value" id="latestRewardDate">-</div>
+          <div class="stat-label">Most Recent Reward</div>
+        </div>
+      </div>
+
+      <div class="content-grid">
+        <div class="card">
+          <div class="card-header"><h3 class="card-title">Achievement Gallery</h3></div>
+          <div id="rewardsList"><div class="spinner"></div></div>
+        </div>
+
+        <div class="card reward-hero">
+          <div class="card-header"><h3 class="card-title">Highlights</h3></div>
+          <div id="featuredReward" class="reward-highlight">
+            <div class="spinner"></div>
+          </div>
+          <div>
+            <h3 class="card-title mb-2">Badge Types</h3>
+            <div id="rewardBreakdown" class="reward-summary-list">
+              <div class="spinner"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/config.js"></script>
+  <script src="js/badges.js"></script>
+  <script src="js/rewards.js"></script>
+</body>
+</html>

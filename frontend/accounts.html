@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Accounts - Academic Task Manager</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div class="dashboard">
+    <aside class="sidebar">
+      <div class="sidebar-header"><h2>TaskManager</h2></div>
+      <nav>
+        <ul class="nav-menu">
+          <li class="nav-item"><a href="dashboard.html" class="nav-link"><span>Overview</span> Dashboard</a></li>
+          <li class="nav-item"><a href="tasks.html" class="nav-link"><span>Plan</span> Tasks</a></li>
+          <li class="nav-item"><a href="analytics.html" class="nav-link"><span>Stats</span> Analytics</a></li>
+          <li class="nav-item"><a href="rewards.html" class="nav-link"><span>Wins</span> Rewards</a></li>
+          <li class="nav-item"><a href="accounts.html" class="nav-link active"><span>User</span> Accounts</a></li>
+          <li class="nav-item"><a href="#" id="logoutBtn" class="nav-link"><span>Exit</span> Logout</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <main class="main-content">
+      <div class="top-bar">
+        <div class="welcome-section">
+          <h1>Account Settings</h1>
+          <p>Review your student details and manage password security.</p>
+        </div>
+      </div>
+
+      <div class="account-grid">
+        <div class="account-stack">
+          <div class="card">
+            <div class="card-header"><h3 class="card-title">Student Information</h3></div>
+            <div class="info-grid">
+              <div class="info-item">
+                <div class="info-label">First Name</div>
+                <div class="info-value" id="accountFirstName">-</div>
+              </div>
+              <div class="info-item">
+                <div class="info-label">Last Name</div>
+                <div class="info-value" id="accountLastName">-</div>
+              </div>
+              <div class="info-item full">
+                <div class="info-label">Email</div>
+                <div class="info-value" id="accountEmail">-</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header"><h3 class="card-title">Profile Overview</h3></div>
+            <div class="account-note">
+              Your account email is used for sign-in, recovery verification, and system alerts. Keep it current so recovery codes and reset messages reach you without trouble.
+            </div>
+          </div>
+        </div>
+
+        <div class="security-stack">
+          <div class="card security-panel">
+            <div class="card-header"><h3 class="card-title">Change Password</h3></div>
+            <p>Enter your current password, then create a new one.</p>
+            <form id="changePasswordForm">
+              <div class="form-group">
+                <label for="currentPassword">Current Password</label>
+                <input type="password" id="currentPassword" class="form-input" minlength="6" required>
+              </div>
+              <div class="form-group">
+                <label for="newPassword">New Password</label>
+                <input type="password" id="newPassword" class="form-input" minlength="6" required>
+              </div>
+              <div class="form-group">
+                <label for="confirmNewPassword">Confirm New Password</label>
+                <input type="password" id="confirmNewPassword" class="form-input" minlength="6" required>
+              </div>
+              <button type="submit" class="btn btn-primary">Update Password</button>
+            </form>
+          </div>
+
+          <div class="card security-panel">
+            <div class="card-header"><h3 class="card-title">Forgot Current Password</h3></div>
+            <p>Verify your email with a 6-digit code, then choose a new password.</p>
+
+            <form id="sendCodeForm">
+              <div class="form-group">
+                <label for="recoveryEmail">Email</label>
+                <input type="email" id="recoveryEmail" class="form-input" required>
+              </div>
+              <div class="form-actions-row">
+                <button type="submit" class="btn btn-secondary">Send Verification Code</button>
+              </div>
+            </form>
+
+            <form id="verifyCodeForm" class="mt-2">
+              <div class="form-group">
+                <label for="verificationCode">6-Digit Code</label>
+                <input type="text" id="verificationCode" class="form-input" inputmode="numeric" pattern="[0-9]{6}" maxlength="6" placeholder="Enter 6-digit code" required>
+              </div>
+              <div class="form-actions-row">
+                <button type="submit" class="btn btn-secondary">Verify Code</button>
+              </div>
+            </form>
+
+            <div id="verificationStatus" class="verification-status mt-2"></div>
+
+            <form id="recoveryPasswordForm" class="mt-2">
+              <div id="recoveryPasswordFields" class="recovery-password-fields" hidden>
+                <div class="form-group">
+                  <label for="recoveryNewPassword">New Password</label>
+                  <input type="password" id="recoveryNewPassword" class="form-input" minlength="6" required>
+                </div>
+                <div class="form-group">
+                  <label for="recoveryConfirmPassword">Confirm New Password</label>
+                  <input type="password" id="recoveryConfirmPassword" class="form-input" minlength="6" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Change Password</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/config.js"></script>
+  <script src="js/accounts.js"></script>
+</body>
+</html>

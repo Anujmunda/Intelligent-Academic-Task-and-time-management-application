@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Analytics - Academic Task Manager</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div class="dashboard">
+    <aside class="sidebar">
+      <div class="sidebar-header"><h2>TaskManager</h2></div>
+      <nav>
+        <ul class="nav-menu">
+          <li class="nav-item"><a href="dashboard.html" class="nav-link"><span>Overview</span> Dashboard</a></li>
+          <li class="nav-item"><a href="tasks.html" class="nav-link"><span>Plan</span> Tasks</a></li>
+          <li class="nav-item"><a href="analytics.html" class="nav-link active"><span>Stats</span> Analytics</a></li>
+          <li class="nav-item"><a href="rewards.html" class="nav-link"><span>Wins</span> Rewards</a></li>
+          <li class="nav-item"><a href="accounts.html" class="nav-link"><span>User</span> Accounts</a></li>
+          <li class="nav-item"><a href="#" id="logoutBtn" class="nav-link"><span>Exit</span> Logout</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <main class="main-content">
+      <div class="top-bar">
+        <div class="welcome-section">
+          <h1>Analytics and Insights</h1>
+          <p>Track your productivity and progress</p>
+        </div>
+      </div>
+
+      <div class="stats-grid">
+        <div class="stat-card"><div class="stat-header"><div class="stat-icon primary">Score</div></div><div class="stat-value" id="productivityScore">0%</div><div class="stat-label">Productivity Score</div></div>
+        <div class="stat-card"><div class="stat-header"><div class="stat-icon success">Rate</div></div><div class="stat-value" id="completionRate">0%</div><div class="stat-label">Completion Rate</div></div>
+        <div class="stat-card"><div class="stat-header"><div class="stat-icon warning">Streak</div></div><div class="stat-value" id="studyStreak">0</div><div class="stat-label">Study Streak</div></div>
+        <div class="stat-card"><div class="stat-header"><div class="stat-icon secondary">Tasks</div></div><div class="stat-value" id="totalTasks">0</div><div class="stat-label">Total Tasks</div></div>
+      </div>
+
+      <div class="content-grid">
+        <div class="card"><div class="card-header"><h3 class="card-title">Weekly Progress</h3></div><div class="chart-container"><canvas id="weeklyChart"></canvas></div></div>
+        <div class="card"><div class="card-header"><h3 class="card-title">Task Distribution</h3></div><div class="chart-container"><canvas id="distributionChart"></canvas></div></div>
+      </div>
+
+      <div class="card mt-3"><div class="card-header"><h3 class="card-title">Priority Breakdown</h3></div><div class="chart-container"><canvas id="priorityChart"></canvas></div></div>
+      <div class="card mt-3">
+        <div class="card-header"><h3 class="card-title">Goals</h3><button class="btn btn-primary btn-sm" onclick="openGoalModal()">+ Add Goal</button></div>
+        <div id="goalsList"><div class="spinner"></div></div>
+      </div>
+    </main>
+  </div>
+
+  <div id="goalModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title">Create New Goal</h2>
+        <button class="close-btn" onclick="closeGoalModal()">&times;</button>
+      </div>
+      <form id="goalForm">
+        <div class="form-group"><label for="goalTitle">Goal Title *</label><input type="text" id="goalTitle" class="form-input" required></div>
+        <div class="form-group"><label for="goalDescription">Description</label><textarea id="goalDescription" class="form-input" rows="3"></textarea></div>
+        <div class="form-group"><label for="goalTargetDate">Target Date</label><input type="date" id="goalTargetDate" class="form-input"></div>
+        <div style="display: flex; gap: 12px; margin-top: 24px;">
+          <button type="submit" class="btn btn-primary" style="flex: 1;">Create Goal</button>
+          <button type="button" class="btn btn-secondary" onclick="closeGoalModal()">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <script src="js/config.js"></script>
+  <script src="js/analytics.js"></script>
+</body>
+</html>
