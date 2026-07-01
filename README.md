@@ -1,5 +1,7 @@
 # Intelligent-Academic-Task-and-time-management-application
+DESCRIPTION:
 Intelligent Academic Task and Time Management Application is a sophisticated productivity ecosystem built on Node.js, specifically engineered to empower students and researchers in optimizing their academic schedules. By integrating a versatile web dashboard with a high-performance command-line interface (CLI), the application offers flexibility for all user workflows. Core functionalities include a secure authentication system, persistent database management for task tracking, and a rigorous testing suite to ensure platform stability. This intelligent tool streamlines time management, allowing users to prioritize deadlines, manage complex projects, and maintain a balanced academic life through data-driven task organization
+
 ## Features
 
 ### Authentication
